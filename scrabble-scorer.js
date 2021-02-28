@@ -82,14 +82,14 @@ let scrabbleScore = function(word) {
  const scoringAlgorithms = [
   {name: "Scrabble",
   description: "The traditional scoring algorithm.",
-  scorerFunction: scrabbleScore},
+  scoringFunction: scrabbleScore},
 
   {name: "Simple Scorer",
   description: "Each letter is worth 1 point.",
-  scorerFunction: simpleScore},
+  scoringFunction: simpleScore},
 
   {name: "Bonus Vowels",
-  description: "Vowels are 3 pts, consonants are 1 pt.",scorerFunction: vowelBonusScore} ]
+  description: "Vowels are 3 pts, consonants are 1 pt.",scoringFunction: vowelBonusScore} ]
 
 
 
@@ -100,13 +100,13 @@ function scorerPrompt(word) {
   
   if (playerInput === "0") {
     console.log(`${scoringAlgorithms[0].name}`)
-      return `Score for: ${scoringAlgorithms[0].scorerFunction(word)}`
+      return `Score for: ${scoringAlgorithms[0].scoringFunction(word)}`
     } else if (playerInput === "1") {
     console.log(`${scoringAlgorithms[1].name}`)
-      return `Score for: ${scoringAlgorithms[1].scorerFunction(word)}`
+      return `Score for: ${scoringAlgorithms[1].scoringFunction(word)}`
     } else if (playerInput === "2") {
     console.log(`${scoringAlgorithms[2].name}`)
-      return `Score for: ${scoringAlgorithms[2].scorerFunction(word)}`
+      return `Score for: ${scoringAlgorithms[2].scoringFunction(word)}`
     } else {
       console.log("Enter 0, 1, or 2")
       }
@@ -114,7 +114,7 @@ function scorerPrompt(word) {
   }
 
 function transform(object){
-  newPointObject = {}
+  let newPointObject = {}
 
   for (item in object) {
     for (let i = 0; i < object[item].length; i++) {
