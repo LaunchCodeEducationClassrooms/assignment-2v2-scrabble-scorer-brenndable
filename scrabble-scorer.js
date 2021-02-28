@@ -34,10 +34,9 @@ function oldScrabbleScorer(word) {
 
 
 
-function initialPrompt() {
-  console.log("Let's play Scrabble!\n ")
-  word = input.question("Enter a word to play: ")
-  console.log(oldScrabbleScorer(word))
+function initialPrompt(word) {
+  console.log("\nLet's play Scrabble!\n ")
+  return input.question("Enter a word to score: ")
 }
   
 
@@ -57,7 +56,7 @@ let vowelBonusScore = function(word) {
 
   for (let i = 0; i < word.length; i++) {
     if (word[i] === "A" || word[i] === "E" || word[i] === "I" || word[i] === "O" ||   word[i] === "U") {
-      vowelPoints += 3 
+      vowelPoints += 2 
     } 
       vowelPoints += 1
   }
@@ -82,15 +81,15 @@ let scrabbleScore = function(word) {
 
  const scoringAlgorithms = [
   {name: "Scrabble",
-  description: "The traditional scoring algorithm.",
+  description: "The traditional scoring algorithm",
   scorerFunction: scrabbleScore},
 
   {name: "Simple Scorer",
-  description: "Each letter is worth 1 point.",
+  description: "Each letter is worth 1 point",
   scorerFunction: simpleScore},
 
   {name: "Bonus Vowels",
-  description: "Vowels are 3 pts, consonants are 1 pt.",
+  description: "Vowels are 3 points, consonants are 1 point",
   scorerFunction: vowelBonusScore} ]
 
 
@@ -98,21 +97,17 @@ let scrabbleScore = function(word) {
 function scorerPrompt(word) {
   let playerInput = 3
   while (playerInput > 2 || isNaN(playerInput)) {
-    playerInput = input.question(`Choose:\n
-    0 - ${scoringAlgorithms[0].name}: ${scoringAlgorithms[0].description}
-    1 - ${scoringAlgorithms[1].name}: ${scoringAlgorithms[1].description}
-    2 - ${scoringAlgorithms[2].name}: ${scoringAlgorithms[2].description}\n
-    Enter 0, 1, or 2: `)
+    playerInput = input.question(`Which scoring algorithm would you like to use?\n\n0 - ${scoringAlgorithms[0].name}: ${scoringAlgorithms[0].description}\n1 - ${scoringAlgorithms[1].name}: ${scoringAlgorithms[1].description}\n2 - ${scoringAlgorithms[2].name}: ${scoringAlgorithms[2].description}\n\nEnter 0, 1, or 2: `)
   
   if (playerInput === "0") {
     console.log(`${scoringAlgorithms[0].name}`)
-      return `Result: ${scoringAlgorithms[0].scorerFunction(word)}`
+      return `Score for: ${scoringAlgorithms[0].scorerFunction(word)}`
     } else if (playerInput === "1") {
     console.log(`${scoringAlgorithms[1].name}`)
-      return `Result: ${scoringAlgorithms[1].scorerFunction(word)}`
+      return `Score for: ${scoringAlgorithms[1].scorerFunction(word)}`
     } else if (playerInput === "2") {
     console.log(`${scoringAlgorithms[2].name}`)
-      return `Result: ${scoringAlgorithms[2].scorerFunction(word)}`
+      return `Score for: ${scoringAlgorithms[2].scorerFunction(word)}`
     } else {
       console.log("Enter 0, 1, or 2")
       }
