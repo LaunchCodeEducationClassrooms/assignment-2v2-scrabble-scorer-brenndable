@@ -81,16 +81,15 @@ let scrabbleScore = function(word) {
 
  const scoringAlgorithms = [
   {name: "Scrabble",
-  description: "The traditional scoring algorithm",
+  description: "The traditional scoring algorithm.",
   scorerFunction: scrabbleScore},
 
   {name: "Simple Scorer",
-  description: "Each letter is worth 1 point",
+  description: "Each letter is worth 1 point.",
   scorerFunction: simpleScore},
 
   {name: "Bonus Vowels",
-  description: "Vowels are 3 points, consonants are 1 point",
-  scorerFunction: vowelBonusScore} ]
+  description: "Vowels are 3 pts, consonants are 1 pt.",scorerFunction: vowelBonusScore} ]
 
 
 
@@ -119,9 +118,9 @@ function transform(object){
 
   for (item in object) {
     for (let i = 0; i < object[item].length; i++) {
-      let key = object[item][i]
-      key = key.toLowerCase()
-      newPointObject[`${key}`] = Number(item)
+      let objectItem = object[item][i]
+      objectItem = objectItem.toLowerCase()
+      newPointObject[`${objectItem}`] = Number(item)
       }
     }
       return newPointObject
