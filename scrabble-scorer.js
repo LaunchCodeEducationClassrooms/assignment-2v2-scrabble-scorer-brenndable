@@ -69,12 +69,8 @@ let scrabbleScore = function(word) {
   let scorePoints = 0
   
   for (let i = 0; i < word.length; i++) {
-   for (letter in newPointStructure) {
-     if (letter === word[i]) {
-       scorePoints +- (newPointStructure[letter])
-      }
-    }
-   }
+    scorePoints += newPointStructure[word[i]]
+  }
     return scorePoints
 };
 
@@ -115,22 +111,19 @@ function scorerPrompt(word) {
 
 function transform(object) {
   let newPointObject = {}
-  let turn = 0
 
   for (item in object) {
-    while (turn < object.length) {
-      let keyStorage = object[item][turn]
+    for (let i = 0; i < object[item].length; i++) {
+      let keyStorage = object[item][i]
       keyStorage = keyStorage.toLowerCase()
       newPointObject[`${keyStorage}`] = Number(item)
-        
-        turn++
+      }
     }
-  }
       return newPointObject
-}
+  }
+
 
 let newPointStructure = transform(oldPointStructure)
-newPointStructure[" "] = 0
  
 
 function runProgram() {
