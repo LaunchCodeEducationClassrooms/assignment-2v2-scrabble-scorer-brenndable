@@ -115,17 +115,19 @@ function scorerPrompt(word) {
 
 function transform(object) {
   let newPointObject = {}
+  let turn = 0
 
   for (item in object) {
-    for (let i = 0; i < object[item].length; i++) {
-      let keyStorage = object[item][i]
+    while (turn < object.length) {
+      let keyStorage = object[item][turn]
       keyStorage = keyStorage.toLowerCase()
       newPointObject[`${keyStorage}`] = Number(item)
-      }
+        
+        turn++
     }
-      return newPointObject
   }
-
+      return newPointObject
+}
 
 let newPointStructure = transform(oldPointStructure)
 newPointStructure[" "] = 0
