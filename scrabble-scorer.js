@@ -52,7 +52,7 @@ let simpleScore = function(word) {
 
 let vowelBonusScore = function(word) {
   word = word.toUpperCase();
-   let vowelPoints = 0
+  let vowelPoints = 0
 
   for (let i = 0; i < word.length; i++) {
     if (word[i] === "A" || word[i] === "E" || word[i] === "I" || word[i] === "O" ||   word[i] === "U") {
@@ -113,14 +113,14 @@ function scorerPrompt(word) {
     }
   }
 
-function transform(object){
+function transform(object) {
   let newPointObject = {}
 
   for (item in object) {
     for (let i = 0; i < object[item].length; i++) {
-      let objectItem = object[item][i]
-      objectItem = objectItem.toLowerCase()
-      newPointObject[`${objectItem}`] = Number(item)
+      let keyStorage = object[item][i]
+      keyStorage = keyStorage.toLowerCase()
+      newPointObject[`${keyStorage}`] = Number(item)
       }
     }
       return newPointObject
@@ -128,6 +128,7 @@ function transform(object){
 
 
 let newPointStructure = transform(oldPointStructure)
+newPointStructure[" "] = 0
  
 
 function runProgram() {
